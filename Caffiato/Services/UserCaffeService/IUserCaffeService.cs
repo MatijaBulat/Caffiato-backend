@@ -1,4 +1,4 @@
-﻿using Caffiato.Dtos.UserCaffe;
+﻿using Caffiato.Dtos.UserCaffeDtos;
 
 namespace Caffiato.Services.UserCaffeService
 {

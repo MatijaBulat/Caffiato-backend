@@ -1,4 +1,4 @@
-﻿namespace Caffiato.Dtos.UserCaffe
+﻿namespace Caffiato.Dtos.UserCaffeDtos
 {
     public class GetUserCaffeDto
     {

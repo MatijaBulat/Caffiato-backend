@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Caffiato.Dtos.UserCaffe;
+using Caffiato.Dtos.UserCaffeDtos;
 using Caffiato.Services.UserCaffeService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

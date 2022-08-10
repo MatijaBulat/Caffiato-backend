@@ -1,6 +1,7 @@
 global using Caffiato.Models;
 global using Microsoft.EntityFrameworkCore;
 global using System.Text.Json.Serialization;
+using Caffiato.Services.CaffeServices;
 using Caffiato.Services.UserCaffeService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddDbContext<CaffiatoDBContext>();
 builder.Services.AddScoped<IUserCaffeService, UserCaffeService>();
+builder.Services.AddScoped<ICaffeService, CaffeService>();
 
 var app = builder.Build();
 
