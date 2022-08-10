@@ -1,6 +1,7 @@
 global using Caffiato.Models;
 global using Microsoft.EntityFrameworkCore;
 global using System.Text.Json.Serialization;
+using Caffiato.Services.UserCaffeService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddDbContext<CaffiatoDBContext>();
+builder.Services.AddScoped<IUserCaffeService, UserCaffeService>();
 
 var app = builder.Build();
 

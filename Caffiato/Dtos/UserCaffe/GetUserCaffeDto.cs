@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Caffiato.Models
+﻿namespace Caffiato.Dtos.UserCaffe
 {
-    public partial class UserCaffe
+    public class GetUserCaffeDto
     {
-        public UserCaffe()
+        public GetUserCaffeDto()
         {
             Caffes = new HashSet<Caffe>();
             Transacts = new HashSet<Transact>();

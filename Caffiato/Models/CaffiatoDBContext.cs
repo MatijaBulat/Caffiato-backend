@@ -29,7 +29,7 @@ namespace Caffiato.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.;Database=CaffiatoDB;Uid=sas;Password=SQL;Trusted_Connection=true;");
+                optionsBuilder.UseSqlServer("Server=.;Database=CaffiatoDB;Uid=sa;Password=SQL;Trusted_Connection=true;");
             }
         }
 
@@ -38,7 +38,7 @@ namespace Caffiato.Models
             modelBuilder.Entity<Address>(entity =>
             {
                 entity.HasKey(e => e.Idaddress)
-                    .HasName("PK__Address__F31F10A0063AE6C8");
+                    .HasName("PK__Address__F31F10A0AA71D6A9");
 
                 entity.ToTable("Address");
 
@@ -64,7 +64,7 @@ namespace Caffiato.Models
             modelBuilder.Entity<Caffe>(entity =>
             {
                 entity.HasKey(e => e.Idcafe)
-                    .HasName("PK__Caffe__43A503680827891A");
+                    .HasName("PK__Caffe__43A5036858FFA50C");
 
                 entity.ToTable("Caffe");
 
@@ -84,7 +84,7 @@ namespace Caffiato.Models
             modelBuilder.Entity<Challenge>(entity =>
             {
                 entity.HasKey(e => e.Idchallenge)
-                    .HasName("PK__Challeng__58DEF4CF5E3B304F");
+                    .HasName("PK__Challeng__58DEF4CF5A598A31");
 
                 entity.ToTable("Challenge");
 
@@ -96,7 +96,7 @@ namespace Caffiato.Models
             modelBuilder.Entity<Deal>(entity =>
             {
                 entity.HasKey(e => e.Iddeal)
-                    .HasName("PK__Deal__327A66D441FBFA9F");
+                    .HasName("PK__Deal__327A66D4EC8C1603");
 
                 entity.ToTable("Deal");
 
@@ -122,7 +122,7 @@ namespace Caffiato.Models
             modelBuilder.Entity<Feedback>(entity =>
             {
                 entity.HasKey(e => e.Idfeedback)
-                    .HasName("PK__Feedback__8456A50A5283C0E9");
+                    .HasName("PK__Feedback__8456A50AE29F2435");
 
                 entity.ToTable("Feedback");
 
@@ -132,7 +132,7 @@ namespace Caffiato.Models
             modelBuilder.Entity<Transact>(entity =>
             {
                 entity.HasKey(e => e.Idtransaction)
-                    .HasName("PK__Transact__A3F081DFBA726018");
+                    .HasName("PK__Transact__A3F081DF2E5A8F2F");
 
                 entity.ToTable("Transact");
 
@@ -154,7 +154,7 @@ namespace Caffiato.Models
             modelBuilder.Entity<UserCaffe>(entity =>
             {
                 entity.HasKey(e => e.IduserCaffe)
-                    .HasName("PK__UserCaff__86A6A8FB737C69FA");
+                    .HasName("PK__UserCaff__86A6A8FB2EDD0C38");
 
                 entity.ToTable("UserCaffe");
 

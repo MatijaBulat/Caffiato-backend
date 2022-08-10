@@ -10,7 +10,6 @@ namespace Caffiato.Models
         public decimal Amount { get; set; }
         public int UserCaffeId { get; set; }
 
-        [JsonIgnore]
         public virtual UserCaffe UserCaffe { get; set; } = null!;
     }
 }
