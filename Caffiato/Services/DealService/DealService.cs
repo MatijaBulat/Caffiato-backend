@@ -27,10 +27,10 @@ namespace Caffiato.Services.DealService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetDealDto>>> DeleteDeal(int id)
+        public async Task<ServiceResponse<IEnumerable<GetDealDto>>> DeleteDeal(int id)
         {
 
-            ServiceResponse<List<GetDealDto>> response = new ServiceResponse<List<GetDealDto>>();
+            ServiceResponse<IEnumerable<GetDealDto>> response = new ServiceResponse<IEnumerable<GetDealDto>>();
             try
             {
                 Deal deal = await caffiatoDBContext.Deals.FirstOrDefaultAsync(d => d.Iddeal == id);
@@ -64,9 +64,9 @@ namespace Caffiato.Services.DealService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetDealDto>>> GetDeals()
+        public async Task<ServiceResponse<IEnumerable<GetDealDto>>> GetDeals()
         {
-            var serviceResponse = new ServiceResponse<List<GetDealDto>>();
+            var serviceResponse = new ServiceResponse<IEnumerable<GetDealDto>>();
             var deals = await caffiatoDBContext.Deals.ToListAsync();
             serviceResponse.Data = deals.Select(d => mapper.Map<GetDealDto>(d)).ToList();
 

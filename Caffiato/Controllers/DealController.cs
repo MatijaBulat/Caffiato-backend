@@ -23,13 +23,13 @@ namespace Caffiato.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ServiceResponse<List<GetDealDto>>>> GetDeals()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetDealDto>>>> GetDeals()
         {
             return Ok(await dealService.GetDeals());
         }
 
         [HttpPost("/caffebar/api/Deals")]
-        public async Task<ActionResult<ServiceResponse<List<GetDealDto>>>> AddDeal(AddDealDto deal)
+        public async Task<ActionResult<ServiceResponse<GetDealDto>>> AddDeal(AddDealDto deal)
         {
             return Ok(await dealService.AddDeal(deal));
         }
@@ -57,7 +57,7 @@ namespace Caffiato.Controllers
         }
 
         [HttpDelete("/caffebar/api/Deals/{id}")]
-        public async Task<ActionResult<ServiceResponse<List<GetDealDto>>>> DeleteDeal(int id)
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetDealDto>>>> DeleteDeal(int id)
         {
             var response = await dealService.DeleteDeal(id);
             if (response.Data == null)

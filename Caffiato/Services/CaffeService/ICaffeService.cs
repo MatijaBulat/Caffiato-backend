@@ -7,6 +7,6 @@ namespace Caffiato.Services.CaffeService
         Task<ServiceResponse<GetCaffeDto>> GetCaffeById(int id);
         Task<ServiceResponse<GetCaffeDto>> AddCaffe(AddCaffeDto caffe);
         Task<ServiceResponse<GetCaffeDto>> UpdateCaffe(UpdateCaffeDto updatedCaffe);
-        Task<ServiceResponse<List<GetCaffeDto>>> DeleteCaffe(int id);
+        Task<ServiceResponse<IEnumerable<GetCaffeDto>>> DeleteCaffe(int id);
     }
 }

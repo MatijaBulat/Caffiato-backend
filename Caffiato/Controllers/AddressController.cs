@@ -23,7 +23,7 @@ namespace Caffiato.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<GetAddressDto>>>> AddAddress(AddAddressDto address)
+        public async Task<ActionResult<ServiceResponse<GetAddressDto>>> AddAddress(AddAddressDto address)
         {
             return Ok(await addressService.AddAddress(address));
         }
@@ -40,7 +40,7 @@ namespace Caffiato.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ServiceResponse<List<GetAddressDto>>>> DeleteAddress(int id)
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetAddressDto>>>> DeleteAddress(int id)
         {
             var response = await addressService.DeleteAddress(id);
             if (response.Data == null)

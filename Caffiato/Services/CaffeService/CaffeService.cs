@@ -26,9 +26,9 @@ namespace Caffiato.Services.CaffeService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetCaffeDto>>> DeleteCaffe(int id)
+        public async Task<ServiceResponse<IEnumerable<GetCaffeDto>>> DeleteCaffe(int id)
         {
-            ServiceResponse<List<GetCaffeDto>> response  = new ServiceResponse<List<GetCaffeDto>>();
+            ServiceResponse<IEnumerable<GetCaffeDto>> response  = new ServiceResponse<IEnumerable<GetCaffeDto>>();
             try
             {
                 Caffe caffe = await caffiatoDBContext.Caffes.FirstOrDefaultAsync(c => c.Idcafe == id);

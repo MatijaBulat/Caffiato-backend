@@ -30,7 +30,7 @@ namespace Caffiato.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<GetUserCaffeDto>>>> AddUserCaffe(AddUserCaffeDto user)
+        public async Task<ActionResult<ServiceResponse<GetUserCaffeDto>>> AddUserCaffe(AddUserCaffeDto user)
         {
             return Ok(await userCaffeService.AddUserCaffe(user));
         }

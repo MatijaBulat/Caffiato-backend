@@ -27,9 +27,9 @@ namespace Caffiato.Services.AddressService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetAddressDto>>> DeleteAddress(int id)
+        public async Task<ServiceResponse<IEnumerable<GetAddressDto>>> DeleteAddress(int id)
         {
-            ServiceResponse<List<GetAddressDto>> response = new ServiceResponse<List<GetAddressDto>>();
+            ServiceResponse<IEnumerable<GetAddressDto>> response = new ServiceResponse<IEnumerable<GetAddressDto>>();
             try
             {
                 Address address = await caffiatoDBContext.Addresses.FirstOrDefaultAsync(a => a.Idaddress== id);

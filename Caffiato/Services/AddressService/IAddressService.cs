@@ -7,6 +7,6 @@ namespace Caffiato.Services.AddressService
         Task<ServiceResponse<GetAddressDto>> GetAddressById(int id);
         Task<ServiceResponse<GetAddressDto>> AddAddress(AddAddressDto address);
         Task<ServiceResponse<GetAddressDto>> UpdateAddress(UpdateAddressDto updatedAddress);
-        Task<ServiceResponse<List<GetAddressDto>>> DeleteAddress(int id);
+        Task<ServiceResponse<IEnumerable<GetAddressDto>>> DeleteAddress(int id);
     }
 }

@@ -23,13 +23,13 @@ namespace Caffiato.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<GetCaffeDto>>>> AddCaffe(AddCaffeDto caffe)
+        public async Task<ActionResult<ServiceResponse<GetCaffeDto>>> AddCaffe(AddCaffeDto caffe)
         {
             return Ok(await caffeService.AddCaffe(caffe));
         }
 
         [HttpDelete("/caffebar/api/Caffes/{id}")]
-        public async Task<ActionResult<ServiceResponse<List<GetCaffeDto>>>> DeleteCaffe(int id)
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetCaffeDto>>>> DeleteCaffe(int id)
         {
             var response = await caffeService.DeleteCaffe(id);
             if (response.Data == null)
