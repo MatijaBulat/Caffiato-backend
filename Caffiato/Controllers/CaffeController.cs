@@ -1,5 +1,5 @@
 ﻿using Caffiato.Dtos.CaffeDtos;
-using Caffiato.Services.CaffeServices;
+using Caffiato.Services.CaffeService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +21,6 @@ namespace Caffiato.Controllers
         {
             return Ok(await caffeService.GetCaffeById(id));
         }
-
 
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<GetCaffeDto>>>> AddCaffe(AddCaffeDto caffe)

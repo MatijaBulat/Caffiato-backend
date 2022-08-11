@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Caffiato.Dtos.CaffeDtos;
 
-namespace Caffiato.Services.CaffeServices
+namespace Caffiato.Services.CaffeService
 {
     public class CaffeService : ICaffeService
     {
@@ -18,8 +18,8 @@ namespace Caffiato.Services.CaffeServices
             var serviceResponse = new ServiceResponse<GetCaffeDto>();
             caffiatoDBContext.Caffes.Add(mapper.Map<Caffe>(caffe));
             await caffiatoDBContext.SaveChangesAsync();
-            serviceResponse.Data = await caffiatoDBContext
-                .Caffes.OrderBy(c => c.Idcafe)
+            serviceResponse.Data = await caffiatoDBContext.Caffes
+                .OrderBy(c => c.Idcafe)
                 .Select(c => mapper.Map<GetCaffeDto>(c))
                 .LastAsync();
 
@@ -34,7 +34,7 @@ namespace Caffiato.Services.CaffeServices
                 Caffe caffe = await caffiatoDBContext.Caffes.FirstOrDefaultAsync(c => c.Idcafe == id);
                 if (caffe != null)
                 {
-                    caffiatoDBContext.Remove(caffe);
+                    caffiatoDBContext.Caffes.Remove(caffe);
                     await caffiatoDBContext.SaveChangesAsync();
                     response.Data = caffiatoDBContext.Caffes.Select(c => mapper.Map<GetCaffeDto>(c)).ToList();
                 }

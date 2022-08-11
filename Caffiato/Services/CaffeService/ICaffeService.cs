@@ -1,6 +1,6 @@
 ﻿using Caffiato.Dtos.CaffeDtos;
 
-namespace Caffiato.Services.CaffeServices
+namespace Caffiato.Services.CaffeService
 {
     public interface ICaffeService
     {
