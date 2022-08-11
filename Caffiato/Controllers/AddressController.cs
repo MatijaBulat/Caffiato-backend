@@ -28,10 +28,10 @@ namespace Caffiato.Controllers
             return Ok(await addressService.AddAddress(address));
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<ServiceResponse<List<GetAddressDto>>>> DeleteAddress(int id)
+        [HttpPut("/caffebar/api/Addresses/{id}")]
+        public async Task<ActionResult<ServiceResponse<GetAddressDto>>> UpdateAddress(UpdateAddressDto updatedAddress)
         {
-            var response = await addressService.DeleteAddress(id);
+            var response = await addressService.UpdateAddress(updatedAddress);
             if (response.Data == null)
             {
                 return NotFound(response);
@@ -39,10 +39,10 @@ namespace Caffiato.Controllers
             return Ok(response);
         }
 
-        [HttpPut("/caffebar/api/Addresses/{id}")]
-        public async Task<ActionResult<ServiceResponse<GetAddressDto>>> UpdateAddress(UpdateAddressDto updatedAddress)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ServiceResponse<List<GetAddressDto>>>> DeleteAddress(int id)
         {
-            var response = await addressService.UpdateAddress(updatedAddress);
+            var response = await addressService.DeleteAddress(id);
             if (response.Data == null)
             {
                 return NotFound(response);
