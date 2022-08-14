@@ -13,6 +13,7 @@ namespace Caffiato.Models
         public int CaffeId { get; set; }
         public bool? Active { get; set; }
 
+        [JsonIgnore]
         public virtual Caffe Caffe { get; set; } = null!;
     }
 }

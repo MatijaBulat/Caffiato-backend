@@ -18,8 +18,11 @@ namespace Caffiato.Services.CaffeService
             var serviceResponse = new ServiceResponse<GetCaffeDto>();
             caffiatoDBContext.Caffes.Add(mapper.Map<Caffe>(caffe));
             await caffiatoDBContext.SaveChangesAsync();
+
             serviceResponse.Data = await caffiatoDBContext.Caffes
                 .OrderBy(c => c.Idcafe)
+                .Include(c => c.Addresses)
+                .Include(c => c.Deals)
                 .Select(c => mapper.Map<GetCaffeDto>(c))
                 .LastAsync();
 
@@ -28,15 +31,28 @@ namespace Caffiato.Services.CaffeService
 
         public async Task<ServiceResponse<IEnumerable<GetCaffeDto>>> DeleteCaffe(int id)
         {
-            ServiceResponse<IEnumerable<GetCaffeDto>> response  = new ServiceResponse<IEnumerable<GetCaffeDto>>();
+            ServiceResponse<IEnumerable<GetCaffeDto>> response = new ServiceResponse<IEnumerable<GetCaffeDto>>();
             try
             {
                 Caffe caffe = await caffiatoDBContext.Caffes.FirstOrDefaultAsync(c => c.Idcafe == id);
                 if (caffe != null)
                 {
+                    Address address = await caffiatoDBContext.Addresses.FirstOrDefaultAsync(a => a.CaffeId == caffe.Idcafe);
+                    if (address != null)
+                    {
+                        caffiatoDBContext.Addresses.Remove(address);
+                    }
+
+                    caffiatoDBContext.Deals.RemoveRange(caffiatoDBContext.Deals.Where(d => d.CaffeId == caffe.Idcafe));
+
+                    
                     caffiatoDBContext.Caffes.Remove(caffe);
                     await caffiatoDBContext.SaveChangesAsync();
-                    response.Data = caffiatoDBContext.Caffes.Select(c => mapper.Map<GetCaffeDto>(c)).ToList();
+
+                    response.Data = caffiatoDBContext.Caffes
+                        .Include(c => c.Addresses)
+                        .Include(c => c.Deals)
+                        .Select(c => mapper.Map<GetCaffeDto>(c)).ToList();
                 }
                 else
                 {
@@ -56,7 +72,10 @@ namespace Caffiato.Services.CaffeService
         public async Task<ServiceResponse<GetCaffeDto>> GetCaffeById(int id)
         {
             var serviceResponse = new ServiceResponse<GetCaffeDto>();
-            var caffe = await caffiatoDBContext.Caffes.FindAsync(id);
+            var caffe = await caffiatoDBContext.Caffes
+                .Include(c => c.Addresses)
+                .Include(c => c.Deals)
+                .FirstOrDefaultAsync(c => c.Idcafe == id);
             serviceResponse.Data = mapper.Map<GetCaffeDto>(caffe);
 
             return serviceResponse;
@@ -68,7 +87,10 @@ namespace Caffiato.Services.CaffeService
 
             try
             {
-                var caffe = await caffiatoDBContext.Caffes.FirstOrDefaultAsync(c => c.Idcafe == updatedCaffe.Idcafe);
+                var caffe = await caffiatoDBContext.Caffes
+                    .Include(c => c.Addresses)
+                    .Include(c => c.Deals)
+                    .FirstOrDefaultAsync(c => c.Idcafe == updatedCaffe.Idcafe);
 
                 if (caffe != null)
                 {

@@ -12,6 +12,7 @@ namespace Caffiato.Models
         public string? PostCode { get; set; }
         public int CaffeId { get; set; }
 
+        [JsonIgnore]
         public virtual Caffe Caffe { get; set; } = null!;
     }
 }
