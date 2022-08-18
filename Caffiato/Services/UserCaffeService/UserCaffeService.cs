@@ -30,7 +30,13 @@ namespace Caffiato.Services.UserCaffeService
         public async Task<ServiceResponse<GetUserCaffeDto>> GetUserCaffeByEmail(string email)
         {
             var serviceResponse = new ServiceResponse<GetUserCaffeDto>();
-            var userCaffe = await caffiatoDBContext.UserCaffes.FirstOrDefaultAsync(u => u.Email == email);
+            var userCaffe = await caffiatoDBContext.UserCaffes
+                .Include(u => u.Caffes)
+                    .ThenInclude(c => c.Deals)
+                .Include(u => u.Caffes)
+                    .ThenInclude(c => c.Addresses)
+                .Include(u => u.Transacts)
+                .FirstOrDefaultAsync(u => u.Email == email);
             serviceResponse.Data = mapper.Map<GetUserCaffeDto>(userCaffe);
 
             return serviceResponse;
