@@ -11,7 +11,7 @@ namespace Caffiato.Models
             Deals = new HashSet<Deal>();
         }
 
-        public int Idcafe { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public int UserCaffeId { get; set; }
 

@@ -8,7 +8,7 @@
             Deals = new HashSet<Deal>();
         }
 
-        public int Idcafe { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public int UserCaffeId { get; set; }
 
@@ -16,5 +16,6 @@
         public virtual UserCaffe UserCaffe { get; set; } = null!;
         public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Deal> Deals { get; set; }
+
     }
 }

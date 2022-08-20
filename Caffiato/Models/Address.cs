@@ -5,7 +5,7 @@ namespace Caffiato.Models
 {
     public partial class Address
     {
-        public int Idaddress { get; set; }
+        public int Id { get; set; }
         public string StreetNumber { get; set; } = null!;
         public string StreetName { get; set; } = null!;
         public string City { get; set; } = null!;

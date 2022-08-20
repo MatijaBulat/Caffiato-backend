@@ -20,7 +20,7 @@ namespace Caffiato.Services.CaffeService
             await caffiatoDBContext.SaveChangesAsync();
 
             serviceResponse.Data = await caffiatoDBContext.Caffes
-                .OrderBy(c => c.Idcafe)
+                .OrderBy(c => c.Id)
                 .Include(c => c.Addresses)
                 .Include(c => c.Deals)
                 .Select(c => mapper.Map<GetCaffeDto>(c))
@@ -34,16 +34,16 @@ namespace Caffiato.Services.CaffeService
             ServiceResponse<IEnumerable<GetCaffeDto>> response = new ServiceResponse<IEnumerable<GetCaffeDto>>();
             try
             {
-                Caffe caffe = await caffiatoDBContext.Caffes.FirstOrDefaultAsync(c => c.Idcafe == id);
+                Caffe caffe = await caffiatoDBContext.Caffes.FirstOrDefaultAsync(c => c.Id == id);
                 if (caffe != null)
                 {
-                    Address address = await caffiatoDBContext.Addresses.FirstOrDefaultAsync(a => a.CaffeId == caffe.Idcafe);
+                    Address address = await caffiatoDBContext.Addresses.FirstOrDefaultAsync(a => a.CaffeId == caffe.Id);
                     if (address != null)
                     {
                         caffiatoDBContext.Addresses.Remove(address);
                     }
 
-                    caffiatoDBContext.Deals.RemoveRange(caffiatoDBContext.Deals.Where(d => d.CaffeId == caffe.Idcafe));
+                    caffiatoDBContext.Deals.RemoveRange(caffiatoDBContext.Deals.Where(d => d.CaffeId == caffe.Id));
 
                     
                     caffiatoDBContext.Caffes.Remove(caffe);
@@ -75,7 +75,7 @@ namespace Caffiato.Services.CaffeService
             var caffe = await caffiatoDBContext.Caffes
                 .Include(c => c.Addresses)
                 .Include(c => c.Deals)
-                .FirstOrDefaultAsync(c => c.Idcafe == id);
+                .FirstOrDefaultAsync(c => c.Id == id);
             serviceResponse.Data = mapper.Map<GetCaffeDto>(caffe);
 
             return serviceResponse;
@@ -90,7 +90,7 @@ namespace Caffiato.Services.CaffeService
                 var caffe = await caffiatoDBContext.Caffes
                     .Include(c => c.Addresses)
                     .Include(c => c.Deals)
-                    .FirstOrDefaultAsync(c => c.Idcafe == updatedCaffe.Idcafe);
+                    .FirstOrDefaultAsync(c => c.Id == updatedCaffe.Id);
 
                 if (caffe != null)
                 {

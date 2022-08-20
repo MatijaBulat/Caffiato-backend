@@ -20,7 +20,7 @@ namespace Caffiato.Services.UserCaffeService
             caffiatoDBContext.UserCaffes.Add(mapper.Map<UserCaffe>(user));
             await caffiatoDBContext.SaveChangesAsync();
             serviceResponse.Data = await caffiatoDBContext.UserCaffes
-                .OrderBy(u => u.IduserCaffe)
+                .OrderBy(u => u.Id)
                 .Select(u => mapper.Map<GetUserCaffeDto>(u))
                 .LastAsync();
 
@@ -51,7 +51,7 @@ namespace Caffiato.Services.UserCaffeService
                 .Include(u => u.Caffes)
                     .ThenInclude(c => c.Addresses)
                 .Include(u => u.Transacts)
-                .FirstOrDefaultAsync(u => u.IduserCaffe == id);
+                .FirstOrDefaultAsync(u => u.Id == id);
             serviceResponse.Data = mapper.Map<GetUserCaffeDto>(userCaffe);
 
             return serviceResponse;

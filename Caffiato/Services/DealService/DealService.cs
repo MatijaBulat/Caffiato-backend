@@ -20,7 +20,7 @@ namespace Caffiato.Services.DealService
             caffiatoDBContext.Deals.Add(mapper.Map<Deal>(deal));
             await caffiatoDBContext.SaveChangesAsync();
             serviceResponse.Data = await caffiatoDBContext.Deals
-                .OrderBy(d => d.Iddeal)
+                .OrderBy(d => d.Id)
                 .Select(d => mapper.Map<GetDealDto>(d))
                 .LastAsync();
 
@@ -33,7 +33,7 @@ namespace Caffiato.Services.DealService
             ServiceResponse<IEnumerable<GetDealDto>> response = new ServiceResponse<IEnumerable<GetDealDto>>();
             try
             {
-                Deal deal = await caffiatoDBContext.Deals.FirstOrDefaultAsync(d => d.Iddeal == id);
+                Deal deal = await caffiatoDBContext.Deals.FirstOrDefaultAsync(d => d.Id == id);
                 if (deal != null)
                 {
                     caffiatoDBContext.Deals.Remove(deal);
@@ -79,7 +79,7 @@ namespace Caffiato.Services.DealService
 
             try
             {
-                var deal = await caffiatoDBContext.Deals.FirstOrDefaultAsync(d => d.Iddeal == updatedDeal.Iddeal);
+                var deal = await caffiatoDBContext.Deals.FirstOrDefaultAsync(d => d.Id == updatedDeal.Id);
 
                 if (deal != null)
                 {
@@ -114,7 +114,7 @@ namespace Caffiato.Services.DealService
 
             try
             {
-                var deal = await caffiatoDBContext.Deals.FirstOrDefaultAsync(d => d.Iddeal == updatedDeal.Iddeal);
+                var deal = await caffiatoDBContext.Deals.FirstOrDefaultAsync(d => d.Id == updatedDeal.Id);
 
                 if (deal != null)
                 {

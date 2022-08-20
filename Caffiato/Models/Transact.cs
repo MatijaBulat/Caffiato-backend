@@ -5,7 +5,7 @@ namespace Caffiato.Models
 {
     public partial class Transact
     {
-        public int Idtransaction { get; set; }
+        public int Id { get; set; }
         public DateTime Time { get; set; }
         public decimal Amount { get; set; }
         public int UserCaffeId { get; set; }
