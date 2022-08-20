@@ -22,7 +22,7 @@ DROP TABLE dbo.Challenge;
 CREATE TABLE dbo.UserCaffe(
 	ID int IDENTITY(1,1) NOT NULL,
 	Email nvarchar(1024) NOT NULL,
-	Username nvarchar(1024) NOT NULL,
+	Username nvarchar(1024),
 	FirstName nvarchar(1024) NOT NULL,
 	LastName nvarchar(1024),
 	DateOfBirth dateTime,
