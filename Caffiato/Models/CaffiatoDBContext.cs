@@ -37,9 +37,11 @@ namespace Caffiato.Models
         {
             modelBuilder.Entity<Address>(entity =>
             {
+                entity.HasKey(e => e.Idaddress);
+
                 entity.ToTable("Address");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Idaddress).HasColumnName("IDAddress");
 
                 entity.Property(e => e.CaffeId).HasColumnName("CaffeID");
 
@@ -60,9 +62,11 @@ namespace Caffiato.Models
 
             modelBuilder.Entity<Caffe>(entity =>
             {
+                entity.HasKey(e => e.Idcaffe);
+
                 entity.ToTable("Caffe");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Idcaffe).HasColumnName("IDCaffe");
 
                 entity.Property(e => e.Name).HasMaxLength(1024);
 
@@ -77,18 +81,22 @@ namespace Caffiato.Models
 
             modelBuilder.Entity<Challenge>(entity =>
             {
+                entity.HasKey(e => e.Idchallenge);
+
                 entity.ToTable("Challenge");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Idchallenge).HasColumnName("IDChallenge");
 
                 entity.Property(e => e.Name).HasMaxLength(1024);
             });
 
             modelBuilder.Entity<Deal>(entity =>
             {
+                entity.HasKey(e => e.Iddeal);
+
                 entity.ToTable("Deal");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Iddeal).HasColumnName("IDDeal");
 
                 entity.Property(e => e.Active).HasDefaultValueSql("((0))");
 
@@ -109,16 +117,20 @@ namespace Caffiato.Models
 
             modelBuilder.Entity<Feedback>(entity =>
             {
+                entity.HasKey(e => e.Idfeedback);
+
                 entity.ToTable("Feedback");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Idfeedback).HasColumnName("IDFeedback");
             });
 
             modelBuilder.Entity<Transact>(entity =>
             {
+                entity.HasKey(e => e.Idtransact);
+
                 entity.ToTable("Transact");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Idtransact).HasColumnName("IDTransact");
 
                 entity.Property(e => e.Amount).HasColumnType("money");
 
@@ -135,9 +147,11 @@ namespace Caffiato.Models
 
             modelBuilder.Entity<UserCaffe>(entity =>
             {
+                entity.HasKey(e => e.IduserCaffe);
+
                 entity.ToTable("UserCaffe");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.IduserCaffe).HasColumnName("IDUserCaffe");
 
                 entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
 

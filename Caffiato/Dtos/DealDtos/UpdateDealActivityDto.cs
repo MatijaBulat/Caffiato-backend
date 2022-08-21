@@ -2,7 +2,7 @@
 {
     public class UpdateDealActivityDto
     {
-        public int Id { get; set; }
+        public int Iddeal { get; set; }
         public bool? Active { get; set; }
     }
 }

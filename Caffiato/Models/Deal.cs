@@ -5,7 +5,7 @@ namespace Caffiato.Models
 {
     public partial class Deal
     {
-        public int Id { get; set; }
+        public int Iddeal { get; set; }
         public string Name { get; set; } = null!;
         public DateTime DateTime { get; set; }
         public int Points { get; set; }

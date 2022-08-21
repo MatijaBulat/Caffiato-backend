@@ -8,7 +8,7 @@
             Transacts = new HashSet<Transact>();
         }
 
-        public int Id { get; set; }
+        public int IduserCaffe { get; set; }
         public string Email { get; set; } = null!;
         public string Username { get; set; } = null!;
         public string FirstName { get; set; } = null!;

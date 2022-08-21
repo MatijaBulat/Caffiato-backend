@@ -20,7 +20,7 @@ namespace Caffiato.Services.AddressService
             caffiatoDBContext.Addresses.Add(mapper.Map<Address>(address));
             await caffiatoDBContext.SaveChangesAsync();
             serviceResponse.Data = await caffiatoDBContext.Addresses
-                .OrderBy(a => a.Id)
+                .OrderBy(a => a.Idaddress)
                 .Select(a => mapper.Map<GetAddressDto>(a))
                 .LastAsync();
 
@@ -32,7 +32,7 @@ namespace Caffiato.Services.AddressService
             ServiceResponse<IEnumerable<GetAddressDto>> response = new ServiceResponse<IEnumerable<GetAddressDto>>();
             try
             {
-                Address address = await caffiatoDBContext.Addresses.FirstOrDefaultAsync(a => a.Id == id);
+                Address address = await caffiatoDBContext.Addresses.FirstOrDefaultAsync(a => a.Idaddress == id);
                 if (address != null)
                 {
                     caffiatoDBContext.Addresses.Remove(address);
@@ -69,7 +69,7 @@ namespace Caffiato.Services.AddressService
 
             try
             {
-                var address = await caffiatoDBContext.Addresses.FirstOrDefaultAsync(a => a.Id == updatedAddress.Id);
+                var address = await caffiatoDBContext.Addresses.FirstOrDefaultAsync(a => a.Idaddress == updatedAddress.Idaddress);
 
                 if (address != null)
                 {

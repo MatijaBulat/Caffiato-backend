@@ -2,7 +2,7 @@
 {
     public class UpdateCaffeDto
     {
-        public int Id { get; set; }
+        public int Idcaffe { get; set; }
         public string Name { get; set; } = null!;
         public int UserCaffeId { get; set; }
 
